@@ -1,5 +1,6 @@
 <script>
     import Counter from './lib/Counter.svelte'; // Импортируем компонент Counter
+    import GifImage from './lib/GifImage.svelte'; // Импортируем новый компонент
 
     const colors = ['red', 'green', 'blue'];
     let currentColorIndex = 0;
@@ -24,15 +25,15 @@
 </script>
 
 <main class={currentClass}>
-    <img src="https://media.tenor.com/ADP4nszb5AcAAAAi/shigure-ui-dance.gif" alt="Dancing Shigure UI" />
+    <GifImage src="https://media.tenor.com/ADP4nszb5AcAAAAi/shigure-ui-dance.gif" alt="Dancing Shigure UI" />
     <div class="hmm">
-    <div class="button-container">
-        <button on:click={() => setColor('red')}>Красный</button>
-        <button on:click={() => setColor('green')}>Зеленый</button>
-        <button on:click={() => setColor('blue')}>Синий</button>
-        <button on:click={startCycle}>Автоцикл цветов</button>
-    </div>
-    <Counter count={colorChangeCount} /> <!-- Отображаем счетчик -->
+        <div class="button-container">
+            <button on:click={() => setColor('red')}>Красный</button>
+            <button on:click={() => setColor('green')}>Зеленый</button>
+            <button on:click={() => setColor('blue')}>Синий</button>
+            <button on:click={startCycle}>Автоцикл цветов</button>
+        </div>
+        <Counter count={colorChangeCount} /> <!-- Отображаем счетчик -->
     </div>
 </main>
 
@@ -61,6 +62,7 @@
     .blue {
         background-color: #3498db; /* Синий цвет */
     }
+
     .hmm {
         display: flex;
         gap: 10px;
@@ -87,11 +89,5 @@
     button:hover {
         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Увеличиваем тень при наведении */
         transform: translateY(-2px); /* Поднимаем кнопку при наведении */
-    }
-
-    img {
-        max-width: 100%; /* Ограничиваем максимальную ширину изображения */
-        height: auto; /* Сохраняем пропорции изображения */
-        margin-bottom: 20px; /* Отступ снизу для кнопок */
     }
 </style>
